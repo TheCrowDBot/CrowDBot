@@ -1,0 +1,22 @@
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poe.tasks]
+format = "black src/"
+lint = "ruff check src/"
+lint_fix = "ruff check src/ --fix"
+typecheck = "mypy src/"
+
+[tool.poetry]
+name = "CrowDBot"
+version = "0.1.0"
+description = ""
+authors = ["Rúben Costa <rubenlavoscosta@gmail.com>", "Miguel Dias"]
+readme = "README.md"
+
+
+
+[tool.poetry.dependencies]
+python = "^3.12"
+streamlit = "^1.58.0"
