@@ -1,0 +1,55 @@
+{
+  "obb": [
+    {
+      "name": "label.pt",
+      "path": "workspace/models/obb/label.pt",
+      "hash": "5843245353748dcda6ca24941aa9a362",
+      "source": "upload",
+      "uploaded_at": 1782294828.7388868
+    },
+    {
+      "name": "label.pt",
+      "path": "workspace/models/obb/label.pt",
+      "hash": "5843245353748dcda6ca24941aa9a362",
+      "source": "upload",
+      "uploaded_at": 1782294885.904168
+    },
+    {
+      "name": "label.pt",
+      "path": "workspace/models/obb/label.pt",
+      "hash": "5843245353748dcda6ca24941aa9a362",
+      "source": "upload",
+      "uploaded_at": 1782298753.1601222
+    },
+    {
+      "name": "label.pt",
+      "path": "workspace/models/obb/label.pt",
+      "hash": "5843245353748dcda6ca24941aa9a362",
+      "source": "upload",
+      "uploaded_at": 1782299140.0765371
+    },
+    {
+      "name": "label.pt",
+      "path": "workspace/models/obb/label.pt",
+      "hash": "5843245353748dcda6ca24941aa9a362",
+      "source": "upload",
+      "uploaded_at": 1782299144.5648131
+    },
+    {
+      "name": "best (2).pt",
+      "path": "workspace/models/obb/best (2).pt",
+      "hash": "370523dbc86071d4656cc91d012a0502",
+      "source": "upload",
+      "uploaded_at": 1782299246.103071
+    }
+  ],
+  "ocr": [
+    {
+      "name": "best (1).pt",
+      "path": "workspace/models/ocr/best (1).pt",
+      "hash": "6bfaffad0018aa1cc9ce76a7e55f9f27",
+      "source": "upload",
+      "uploaded_at": 1782300769.879759
+    }
+  ]
+}

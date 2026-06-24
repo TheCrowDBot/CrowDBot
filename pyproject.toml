@@ -3,20 +3,29 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 
 [tool.poe.tasks]
-format = "black src/"
-lint = "ruff check src/"
-lint_fix = "ruff check src/ --fix"
-typecheck = "mypy src/"
+format = "black crowdbot/"
+lint = "ruff check crowdbot/"
+lint_fix = "ruff check crowdbot/ --fix"
+typecheck = "mypy crowdbot/"
+run = "streamlit run crowdbot/main.py"
 
 [tool.poetry]
 name = "CrowDBot"
 version = "0.1.0"
 description = ""
-authors = ["Rúben Costa <rubenlavoscosta@gmail.com>", "Miguel Dias"]
+authors = [
+  "Rúben Costa <rubenlavoscosta@gmail.com>",
+  "Miguel Dias <miguelpintodias@hotmail.com>"
+]
 readme = "README.md"
-
-
 
 [tool.poetry.dependencies]
 python = "^3.12"
 streamlit = "^1.58.0"
+ultralytics = "^8.4.75"
+
+[tool.poetry.group.dev.dependencies]
+black = "^26.5.1"
+mypy = "^2.1.0"
+poethepoet = "^0.46.0"
+ruff = "^0.15.19"
