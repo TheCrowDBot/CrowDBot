@@ -2,38 +2,48 @@ import streamlit as st
 from ui.sidebar import render_sidebar
 from ui.components.folder_selector import render_folder_selector
 from ui.components.pipeline_view import render_pipeline_view
-from services.pipeline_queue import current_item, advance
-from services.pipeline_engine import run_obb_step
+from services.pipeline_queue import current_item
+from services.pipeline_engine import run_obb_step, run_ocr_step
 
 
 def render_processing_page():
 
-    render_sidebar()
+    sidebar = render_sidebar()
 
     render_folder_selector()
     render_pipeline_view()
 
     image = current_item()
-    model_path = st.session_state.get("obb_active_path")
 
     if not image:
         st.info("No images loaded")
         return
 
-    if not model_path:
-        st.warning("No model selected")
+    if not sidebar["obb_model"]:
+        st.warning("No OBB model selected")
         return
 
     if st.button("Process"):
-        result = run_obb_step(
-            model_path=model_path,
+        obb_result = run_obb_step(
+            model_path=sidebar["obb_model"],
             show_image=True,
             show_logs=True,
             auto_advance=False,
         )
 
-        st.session_state["last_result"] = result
+        st.session_state["last_obb_result"] = obb_result
 
-        
-        # advance()
-        # st.rerun()
+        if obb_result and sidebar.get("ocr_model") and sidebar.get("ocr_vocab"):
+            ocr_result = run_ocr_step(
+                model_path=sidebar["ocr_model"],
+                vocab_path=sidebar["ocr_vocab"],
+                obb_result=obb_result,
+                show_image=True,
+                show_logs=True,
+                auto_advance=False,
+            )
+
+            st.session_state["last_ocr_result"] = ocr_result
+
+        elif obb_result and sidebar.get("ocr_model") and not sidebar.get("ocr_vocab"):
+            st.warning("OCR model selected but vocab.json is missing.")

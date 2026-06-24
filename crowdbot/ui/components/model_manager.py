@@ -49,6 +49,11 @@ def render_model_manager(model_type: str):
         if model_obj:
             model_path = model_obj["path"]
             st.session_state[active_key] = model_path
+            
+            for extra in spec.get("extra_files", []):
+                extra_val = model_obj.get(extra["key"])
+                st.session_state[f"{model_type}_{extra['key']}"] = extra_val
+            
             st.success(f"Using {model_name}")
         else:
             st.rerun()
@@ -66,20 +71,43 @@ def render_model_manager(model_type: str):
         )
 
         if uploaded:
+            spec_extras = spec.get("extra_files", [])
+            extra_uploads = {}
+            all_present = True
+
+            for extra in spec_extras:
+                f = st.file_uploader(
+                    extra["label"],
+                    type=extra["file_type"],
+                    key=f"{model_type}_{extra['key']}_upload",
+                )
+                extra_uploads[extra["key"]] = f
+                if extra.get("required") and f is None:
+                    all_present = False
+
+            if not all_present:
+                st.warning("Faz upload de todos os ficheiros necessários.")
+            
             if st.button(
                 "Install uploaded model", key=f"{model_type}_upload_btn", type="primary"
             ):
                 path, file_hash = save_model(uploaded, subfolder=spec["folder"])
 
-                models.append(
-                    {
-                        "name": uploaded.name,
-                        "path": str(path),
-                        "hash": file_hash,
-                        "source": "upload",
-                        "uploaded_at": time.time(),
-                    }
-                )
+                entry = {
+                    "name": uploaded.name,
+                    "path": str(path),
+                    "hash": file_hash,
+                    "source": "upload",
+                    "uploaded_at": time.time(),
+                }
+
+                for extra in spec_extras:
+                    extra_file = extra_uploads[extra["key"]]
+                    if extra_file:
+                        extra_path, _ = save_model(extra_file, subfolder=spec["folder"])
+                        entry[extra["key"]] = str(extra_path)
+
+                models.append(entry)
 
                 registry[model_type] = models
                 save_registry(registry)
@@ -121,4 +149,9 @@ def render_model_manager(model_type: str):
 
                     st.rerun()
 
-    return st.session_state.get(active_key)
+    result = {"model_path": st.session_state.get(active_key)}
+
+    for extra in spec.get("extra_files", []):
+        result[extra["key"]] = st.session_state.get(f"{model_type}_{extra['key']}")
+
+    return result

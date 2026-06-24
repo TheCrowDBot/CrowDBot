@@ -7,8 +7,16 @@ MODEL_SPECS = {
     },
     "ocr": {
         "title": "OCR Model",
-        "file_type": ["pt", "onnx"],
+        "file_type": ["keras"],
         "folder": "ocr",
         "url_label": "Download OCR model from URL",
+        "extra_files": [
+            {
+                "key": "vocab_path",
+                "label": "Vocabulary file",
+                "file_type": ["json"],
+                "required": True,
+            }
+        ],
     },
 }

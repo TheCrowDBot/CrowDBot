@@ -1,0 +1,28 @@
+{
+  "obb": [
+    {
+      "name": "best_april_10_2026_at_14_56.pt",
+      "path": "workspace\\models\\obb\\best_april_10_2026_at_14_56.pt",
+      "hash": "6bfaffad0018aa1cc9ce76a7e55f9f27",
+      "source": "upload",
+      "uploaded_at": 1782302490.8689005
+    }
+  ],
+  "ocr": [
+    {
+      "name": "best_model_final.keras",
+      "path": "workspace\\models\\ocr\\best_model_final.keras",
+      "hash": "53550051a0da7295b5e85ff359d70408",
+      "source": "upload",
+      "uploaded_at": 1782310417.4367213
+    },
+    {
+      "name": "best_model_final.keras",
+      "path": "workspace\\models\\ocr\\best_model_final.keras",
+      "hash": "53550051a0da7295b5e85ff359d70408",
+      "source": "upload",
+      "uploaded_at": 1782320771.035691,
+      "vocab_path": "workspace\\models\\ocr\\vocab.json"
+    }
+  ]
+}

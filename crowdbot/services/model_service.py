@@ -53,3 +53,26 @@ class ModelService:
 
         save_registry(registry)
         return path
+    
+    @staticmethod
+    def get_active_vocab_path(model_type: str):
+        model = ModelService.get_selected(model_type)
+        return model.get("vocab_path") if model else None
+
+    @staticmethod
+    def upload_ocr_model(uploaded_model, uploaded_vocab):
+        registry = load_registry()
+        model_path, model_hash = save_model(uploaded_model)
+        vocab_path, _ = save_model(uploaded_vocab)
+
+        registry.setdefault("ocr", []).append(
+            {
+                "name": uploaded_model.name,
+                "path": str(model_path),
+                "hash": model_hash,
+                "vocab_path": str(vocab_path),
+            }
+        )
+
+        save_registry(registry)
+        return model_path, vocab_path
