@@ -18,6 +18,15 @@ from config.settings import (
     OCR_CLASSES,
 )
 
+print(
+    SHOW_IMAGE_DEFAULT,
+    SHOW_LOGS_DEFAULT,
+    AUTO_ADVANCE_DEFAULT,
+    OCR_LOG_PREFIX,
+    IMAGE_PREVIEW_WIDTH,
+    OCR_CLASSES,
+)
+
 
 @keras.utils.register_keras_serializable()
 class CTCLayer(keras.layers.Layer):
@@ -56,6 +65,7 @@ def load_vocab(vocab_path: str):
     )
     return num_to_char, padding_token
 
+
 def decode_predictions(preds: np.ndarray, num_to_char) -> list[str]:
     input_len = np.ones(preds.shape[0]) * preds.shape[1]
     results = keras.backend.ctc_decode(preds, input_length=input_len, greedy=True)[0][0]
@@ -66,6 +76,7 @@ def decode_predictions(preds: np.ndarray, num_to_char) -> list[str]:
         out.append(text)
     return out
 
+
 class OCRPipeline:
 
     def __init__(self, model_path: str, vocab_path: str = "../config/vocab.json"):
@@ -75,7 +86,7 @@ class OCRPipeline:
             model_path,
             custom_objects={"CTCLayer": CTCLayer},
         )
-        
+
         # Extrai o sub-modelo de inferência (sem a CTC loss)
         self.model = keras.models.Model(
             inputs=raw_model.input[0],
@@ -92,7 +103,7 @@ class OCRPipeline:
     def run(
         self,
         image_path: str,
-        detections: list[dict],      
+        detections: list[dict],
         *,
         show_image: bool = SHOW_IMAGE_DEFAULT,
         show_logs: bool = SHOW_LOGS_DEFAULT,
@@ -120,21 +131,28 @@ class OCRPipeline:
 
             text = self.run_on_crop(crop)
 
-            results.append({
-                "class_id": det["class_id"],
-                "class_name": det["class_name"],
-                "confidence": det["confidence"],
-                "polygon": det["polygon"],
-                "text": text,
-            })
+            results.append(
+                {
+                    "class_id": det["class_id"],
+                    "class_name": det["class_name"],
+                    "confidence": det["confidence"],
+                    "polygon": det["polygon"],
+                    "text": text,
+                }
+            )
 
             if show_logs:
                 st.write(f"{OCR_LOG_PREFIX} [{det['class_name']}] → '{text}'")
 
             if show_image:
                 import cv2 as _cv2
+
                 crop_rgb = _cv2.cvtColor(crop, _cv2.COLOR_BGR2RGB)
-                st.image(crop_rgb, caption=f"{det['class_name']}: {text}", width=IMAGE_PREVIEW_WIDTH)
+                st.image(
+                    crop_rgb,
+                    caption=f"{det['class_name']}: {text}",
+                    width=IMAGE_PREVIEW_WIDTH,
+                )
 
         elapsed = time.time() - start
 

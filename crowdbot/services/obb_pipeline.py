@@ -17,7 +17,6 @@ class OBBPipeline:
         self.model = YOLO(model_path, verbose=False)
 
     def infer(self, image_path: str):
-        print("infer")
         return self.model(image_path)[0]
 
     def parse_result(self, result):

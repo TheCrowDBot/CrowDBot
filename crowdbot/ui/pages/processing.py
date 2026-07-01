@@ -26,9 +26,6 @@ def render_processing_page():
     if st.button("Process"):
         obb_result = run_obb_step(
             model_path=sidebar["obb_model"],
-            show_image=True,
-            show_logs=True,
-            auto_advance=False,
         )
 
         st.session_state["last_obb_result"] = obb_result
@@ -38,9 +35,6 @@ def render_processing_page():
                 model_path=sidebar["ocr_model"],
                 vocab_path=sidebar["ocr_vocab"],
                 obb_result=obb_result,
-                show_image=True,
-                show_logs=True,
-                auto_advance=False,
             )
 
             st.session_state["last_ocr_result"] = ocr_result
