@@ -12,7 +12,7 @@ def render_ocr_config():
     if not models:
 
         uploaded_model = st.file_uploader(
-            "Upload OCR Model (.keras)", type=["keras"], key="ocr_upload_empty"
+            "Upload OCR Model (.pt)", type=["pt"], key="ocr_upload_empty"
         )
         uploaded_vocab = st.file_uploader(
             "Upload Vocab (.json)", type=["json"], key="ocr_vocab_empty"
@@ -41,7 +41,7 @@ def render_ocr_config():
         st.warning("Este modelo não tem vocab associado.")
 
     uploaded_model = st.file_uploader(
-        "Upload new model", type=["keras"], key="ocr_upload"
+        "Upload new model", type=["pt"], key="ocr_upload"
     )
     uploaded_vocab = st.file_uploader(
         "Upload new vocab", type=["json"], key="ocr_vocab"

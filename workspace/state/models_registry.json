@@ -13,6 +13,20 @@
       "hash": "6ed2360805ed5ccf1d7de4093ead4355",
       "source": "upload",
       "uploaded_at": 1783505785.9243898
+    },
+    {
+      "name": "best_april_10_2026_at_14_56.pt",
+      "path": "workspace\\models\\obb\\best_april_10_2026_at_14_56.pt",
+      "hash": "6bfaffad0018aa1cc9ce76a7e55f9f27",
+      "source": "upload",
+      "uploaded_at": 1783540018.8638003
+    },
+    {
+      "name": "best_model_jul_7.pt",
+      "path": "workspace\\models\\obb\\best_model_jul_7.pt",
+      "hash": "6ed2360805ed5ccf1d7de4093ead4355",
+      "source": "upload",
+      "uploaded_at": 1783541283.961518
     }
   ],
   "ocr": [
@@ -39,6 +53,54 @@
       "source": "upload",
       "uploaded_at": 1783505722.1919339,
       "vocab_path": "workspace/models/ocr/vocab.json"
+    },
+    {
+      "name": "best_model_final.pt",
+      "path": "workspace\\models\\ocr\\best_model_final.pt",
+      "hash": "15a98a951e73f90729f01cd958cb8851",
+      "source": "upload",
+      "uploaded_at": 1783540120.0456746,
+      "vocab_path": "workspace\\models\\ocr\\vocab.json"
+    },
+    {
+      "name": "best_model_final.pt",
+      "path": "workspace\\models\\ocr\\best_model_final.pt",
+      "hash": "15a98a951e73f90729f01cd958cb8851",
+      "source": "upload",
+      "uploaded_at": 1783540121.2582395,
+      "vocab_path": "workspace\\models\\ocr\\vocab.json"
+    },
+    {
+      "name": "best_model_final.pt",
+      "path": "workspace\\models\\ocr\\best_model_final.pt",
+      "hash": "15a98a951e73f90729f01cd958cb8851",
+      "source": "upload",
+      "uploaded_at": 1783540121.8930676,
+      "vocab_path": "workspace\\models\\ocr\\vocab.json"
+    },
+    {
+      "name": "best_model_final.pt",
+      "path": "workspace\\models\\ocr\\best_model_final.pt",
+      "hash": "15a98a951e73f90729f01cd958cb8851",
+      "source": "upload",
+      "uploaded_at": 1783540226.368282,
+      "vocab_path": "workspace\\models\\ocr\\vocab.json"
+    },
+    {
+      "name": "best_model_final.pt",
+      "path": "workspace\\models\\ocr\\best_model_final.pt",
+      "hash": "15a98a951e73f90729f01cd958cb8851",
+      "source": "upload",
+      "uploaded_at": 1783540227.165866,
+      "vocab_path": "workspace\\models\\ocr\\vocab.json"
+    },
+    {
+      "name": "best_model_final.pt",
+      "path": "workspace\\models\\ocr\\best_model_final.pt",
+      "hash": "15a98a951e73f90729f01cd958cb8851",
+      "source": "upload",
+      "uploaded_at": 1783540227.7823324,
+      "vocab_path": "workspace\\models\\ocr\\vocab.json"
     }
   ]
 }

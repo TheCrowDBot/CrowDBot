@@ -11,6 +11,8 @@ class CrawIOPipeline:
 
     def run(self, json):
         schema = parse_er_diagram(json, DEBUG=True)
+        for e in schema.entities:
+            print("ENTITY:", e.name, "| ATTRS:", [a.name for a in e.attributes])
         generator = ERDiagramGenerator()
 
         for entity in schema.entities:

@@ -10,7 +10,7 @@ MODEL_SPECS: dict[str, dict[str, Any]] = {
     },
     "ocr": {
         "title": "OCR Model",
-        "file_type": ["keras"],
+        "file_type": ["pt"],
         "folder": "ocr",
         "url_label": "Download OCR model from URL",
         "extra_files": [

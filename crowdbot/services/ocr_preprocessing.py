@@ -1,8 +1,10 @@
 import cv2
 import numpy as np
-import tensorflow as tf
+import torch
+from PIL import Image
 
-TARGET_W = 200
+
+TARGET_W = 256
 TARGET_H = 50
 
 
@@ -52,7 +54,6 @@ def crop_rotated(img: np.ndarray, box: list) -> np.ndarray | None:
         borderMode=cv2.BORDER_REPLICATE,
     )
 
-    # Upscale se a crop for muito pequena
     if crop.shape[0] < 30:
         scale = 30 / crop.shape[0]
         crop = cv2.resize(crop, None, fx=scale, fy=scale, interpolation=cv2.INTER_CUBIC)
@@ -60,26 +61,24 @@ def crop_rotated(img: np.ndarray, box: list) -> np.ndarray | None:
     return crop
 
 
-def preprocess_for_ocr(image: np.ndarray) -> tf.Tensor:
+def normalize_image(img: Image.Image) -> Image.Image:
+    img = img.convert("L")
+    w, h = img.size
+    scale = min(TARGET_W / w, TARGET_H / h)
+    nw, nh = max(1, int(w * scale)), max(1, int(h * scale))
+    img = img.resize((nw, nh), Image.BILINEAR)
+    canvas = Image.new("L", (TARGET_W, TARGET_H), 255)
+    canvas.paste(img, ((TARGET_W - nw) // 2, (TARGET_H - nh) // 2))
+    return canvas
+
+
+def preprocess_for_ocr(image: np.ndarray) -> torch.Tensor:
     if len(image.shape) == 3:
         image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-    image = cv2.resize(image, (TARGET_W, TARGET_H), interpolation=cv2.INTER_CUBIC)
+    pil_img = Image.fromarray(image)
+    pil_img = normalize_image(pil_img)
 
-    clahe = cv2.createCLAHE(clipLimit=2.0, tileGridSize=(4, 2))
-    image = clahe.apply(image)
-
-    image = cv2.GaussianBlur(image, (3, 3), 0)
-
-    image = cv2.adaptiveThreshold(
-        image,
-        255,
-        cv2.ADAPTIVE_THRESH_GAUSSIAN_C,
-        cv2.THRESH_BINARY,
-        blockSize=15,
-        C=10,
-    )
-
-    tensor = tf.cast(image, tf.float32) / 255.0
-    tensor = tf.expand_dims(tf.expand_dims(tensor, -1), 0)
+    arr = np.array(pil_img, dtype=np.float32) / 255.0
+    tensor = torch.from_numpy(arr).unsqueeze(0).unsqueeze(0)  # (1, 1, H, W)
     return tensor
