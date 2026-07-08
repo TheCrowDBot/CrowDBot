@@ -48,7 +48,7 @@ def render_processing_page():
             )
             st.session_state["last_ocr_result"] = ocr_result
 
-            generated = run_crawio_step(json=matcher_result)
-            st.write(generated)
+            run_crawio_step(json=matcher_result)
+            st.success("Created drawio diagram!")
         elif obb_result and sidebar.get("ocr_model") and not sidebar.get("ocr_vocab"):
             st.warning("OCR model selected but vocab.json is missing.")

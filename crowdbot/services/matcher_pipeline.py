@@ -2,6 +2,7 @@ import crowmatcher
 from dataclasses import asdict
 from PIL import Image
 import numpy as np
+import streamlit as st
 
 
 class MatcherPipeline:
