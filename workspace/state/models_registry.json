@@ -6,6 +6,13 @@
       "hash": "6ed2360805ed5ccf1d7de4093ead4355",
       "source": "upload",
       "uploaded_at": 1782483001.722582
+    },
+    {
+      "name": "best_model_jul_7.pt",
+      "path": "workspace/models/obb/best_model_jul_7.pt",
+      "hash": "6ed2360805ed5ccf1d7de4093ead4355",
+      "source": "upload",
+      "uploaded_at": 1783505785.9243898
     }
   ],
   "ocr": [
@@ -15,6 +22,22 @@
       "hash": "9ee9b0dc47db8875f2226e698f6b5cd1",
       "source": "upload",
       "uploaded_at": 1782483015.8281012,
+      "vocab_path": "workspace/models/ocr/vocab.json"
+    },
+    {
+      "name": "best_model_final.keras",
+      "path": "workspace/models/ocr/best_model_final.keras",
+      "hash": "14b526cd482d21fd44acc460504356f0",
+      "source": "upload",
+      "uploaded_at": 1783505704.7678132,
+      "vocab_path": "workspace/models/ocr/vocab.json"
+    },
+    {
+      "name": "best_model_final.keras",
+      "path": "workspace/models/ocr/best_model_final.keras",
+      "hash": "14b526cd482d21fd44acc460504356f0",
+      "source": "upload",
+      "uploaded_at": 1783505722.1919339,
       "vocab_path": "workspace/models/ocr/vocab.json"
     }
   ]

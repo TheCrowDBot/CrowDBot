@@ -1,9 +1,6 @@
 import streamlit as st
-from services.model_registry import load_registry, save_registry
-from services.model_storage import save_model
 
-import streamlit as st
-from services.model_service import ModelService
+from crowdbot.services.model_service import ModelService
 
 
 def render_obb_config():

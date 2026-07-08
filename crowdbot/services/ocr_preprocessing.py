@@ -18,8 +18,8 @@ def order_points(pts: np.ndarray) -> np.ndarray:
 
 
 def crop_rotated(img: np.ndarray, box: list) -> np.ndarray | None:
-    #Recorta uma região OBB da imagem e endireita-a
-    
+    # Recorta uma região OBB da imagem e endireita-a
+
     pts = np.array(box, dtype=np.float32)
     rect = cv2.minAreaRect(pts)
     box_pts = order_points(cv2.boxPoints(rect))
@@ -33,13 +33,21 @@ def crop_rotated(img: np.ndarray, box: list) -> np.ndarray | None:
 
     if height > width:
         width, height = height, width
-        dst = np.array([[0, height - 1], [0, 0], [width - 1, 0], [width - 1, height - 1]], dtype="float32")
+        dst = np.array(
+            [[0, height - 1], [0, 0], [width - 1, 0], [width - 1, height - 1]],
+            dtype="float32",
+        )
     else:
-        dst = np.array([[0, 0], [width - 1, 0], [width - 1, height - 1], [0, height - 1]], dtype="float32")
+        dst = np.array(
+            [[0, 0], [width - 1, 0], [width - 1, height - 1], [0, height - 1]],
+            dtype="float32",
+        )
 
     M = cv2.getPerspectiveTransform(box_pts, dst)
     crop = cv2.warpPerspective(
-        img, M, (width, height),
+        img,
+        M,
+        (width, height),
         flags=cv2.INTER_CUBIC,
         borderMode=cv2.BORDER_REPLICATE,
     )
@@ -64,7 +72,8 @@ def preprocess_for_ocr(image: np.ndarray) -> tf.Tensor:
     image = cv2.GaussianBlur(image, (3, 3), 0)
 
     image = cv2.adaptiveThreshold(
-        image, 255,
+        image,
+        255,
         cv2.ADAPTIVE_THRESH_GAUSSIAN_C,
         cv2.THRESH_BINARY,
         blockSize=15,
@@ -72,5 +81,5 @@ def preprocess_for_ocr(image: np.ndarray) -> tf.Tensor:
     )
 
     tensor = tf.cast(image, tf.float32) / 255.0
-    tensor = tf.expand_dims(tf.expand_dims(tensor, -1), 0) 
+    tensor = tf.expand_dims(tf.expand_dims(tensor, -1), 0)
     return tensor

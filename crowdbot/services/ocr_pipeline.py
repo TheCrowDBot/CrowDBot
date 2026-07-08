@@ -1,4 +1,3 @@
-import os
 import numpy as np
 import tensorflow as tf
 from tensorflow import keras
@@ -8,17 +7,8 @@ import streamlit as st
 import time
 import cv2
 
-from services.ocr_preprocessing import crop_rotated, preprocess_for_ocr
-from config.settings import (
-    SHOW_IMAGE_DEFAULT,
-    SHOW_LOGS_DEFAULT,
-    AUTO_ADVANCE_DEFAULT,
-    OCR_LOG_PREFIX,
-    IMAGE_PREVIEW_WIDTH,
-    OCR_CLASSES,
-)
-
-print(
+from crowdbot.services.ocr_preprocessing import crop_rotated, preprocess_for_ocr
+from crowdbot.config.settings import (
     SHOW_IMAGE_DEFAULT,
     SHOW_LOGS_DEFAULT,
     AUTO_ADVANCE_DEFAULT,
@@ -103,69 +93,26 @@ class OCRPipeline:
     def run(
         self,
         image_path: str,
-        detections: list[dict],
+        schema: dict,
         *,
-        show_image: bool = SHOW_IMAGE_DEFAULT,
-        show_logs: bool = SHOW_LOGS_DEFAULT,
-        auto_advance: bool = AUTO_ADVANCE_DEFAULT,
-    ) -> dict:
+        show_image=False,
+        show_logs=False,
+    ):
 
-        start = time.time()
         img = cv2.imread(image_path)
 
-        if img is None:
-            raise FileNotFoundError(f"Imagem não encontrada: {image_path}")
+        for table in schema["tables"]:
 
-        results = []
+            # entity OCR
+            entity_crop = crop_rotated(img, table["entity_polygon"])
 
-        for det in detections:
-            if det["class_name"] not in OCR_CLASSES:
-                continue
-            polygon = det["polygon"]
-            if isinstance(polygon[0][0], list):
-                polygon = polygon[0]
+            table["text"] = self.run_on_crop(entity_crop)
 
-            crop = crop_rotated(img, polygon)
-            if crop is None or crop.size == 0:
-                continue
+            # attributes OCR
+            for attr in table["attributes"]:
 
-            text = self.run_on_crop(crop)
+                crop = crop_rotated(img, attr["polygon"])
 
-            results.append(
-                {
-                    "class_id": det["class_id"],
-                    "class_name": det["class_name"],
-                    "confidence": det["confidence"],
-                    "polygon": det["polygon"],
-                    "text": text,
-                }
-            )
+                attr["text"] = self.run_on_crop(crop)
 
-            if show_logs:
-                st.write(f"{OCR_LOG_PREFIX} [{det['class_name']}] → '{text}'")
-
-            if show_image:
-                import cv2 as _cv2
-
-                crop_rgb = _cv2.cvtColor(crop, _cv2.COLOR_BGR2RGB)
-                st.image(
-                    crop_rgb,
-                    caption=f"{det['class_name']}: {text}",
-                    width=IMAGE_PREVIEW_WIDTH,
-                )
-
-        elapsed = time.time() - start
-
-        if show_logs:
-            st.write(f"{OCR_LOG_PREFIX} OCR: {len(results)} palavras em {elapsed:.2f}s")
-
-        output = {
-            "image": image_path,
-            "ocr_results": results,
-        }
-
-        if auto_advance:
-            st.session_state.pipeline_index += 1
-            st.rerun()
-
-        return output
+        return schema

@@ -1,5 +1,5 @@
 import streamlit as st
-from ui.components.model_manager import render_model_manager
+from crowdbot.ui.components.model_manager import render_model_manager
 
 
 def render_sidebar():

@@ -3,12 +3,12 @@ from pathlib import Path
 import time
 from datetime import datetime
 
-from config.model_specs import MODEL_SPECS
-from config.settings import SUCCESS_MESSAGE_TTL
-from services.model_registry import load_registry, save_registry
-from services.model_storage import save_model
-from services.model_downloader import download_model
-from ui.components.temporary_messages import show_temp_success
+from crowdbot.config.model_specs import MODEL_SPECS
+from crowdbot.config.settings import SUCCESS_MESSAGE_TTL
+from crowdbot.services.model_registry import load_registry, save_registry
+from crowdbot.services.model_storage import save_model
+from crowdbot.services.model_downloader import download_model
+from crowdbot.ui.components.temporary_messages import show_temp_success
 
 
 def _format_ts(ts):
@@ -49,11 +49,11 @@ def render_model_manager(model_type: str):
         if model_obj:
             model_path = model_obj["path"]
             st.session_state[active_key] = model_path
-            
+
             for extra in spec.get("extra_files", []):
                 extra_val = model_obj.get(extra["key"])
                 st.session_state[f"{model_type}_{extra['key']}"] = extra_val
-            
+
             st.success(f"Using {model_name}")
         else:
             st.rerun()
@@ -87,7 +87,7 @@ def render_model_manager(model_type: str):
 
             if not all_present:
                 st.warning("Faz upload de todos os ficheiros necessários.")
-            
+
             if st.button(
                 "Install uploaded model", key=f"{model_type}_upload_btn", type="primary"
             ):

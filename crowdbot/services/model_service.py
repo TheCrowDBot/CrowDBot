@@ -1,6 +1,6 @@
 import streamlit as st
-from services.model_registry import load_registry, save_registry
-from services.model_storage import save_model
+from crowdbot.services.model_registry import load_registry, save_registry
+from crowdbot.services.model_storage import save_model
 
 
 class ModelService:
@@ -53,7 +53,7 @@ class ModelService:
 
         save_registry(registry)
         return path
-    
+
     @staticmethod
     def get_active_vocab_path(model_type: str):
         model = ModelService.get_selected(model_type)

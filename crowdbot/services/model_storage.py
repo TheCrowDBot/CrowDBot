@@ -1,7 +1,6 @@
 from pathlib import Path
 import hashlib
 
-
 BASE_MODELS_DIR = Path("workspace/models")
 
 

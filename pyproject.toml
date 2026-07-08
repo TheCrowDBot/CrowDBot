@@ -22,7 +22,8 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 crawio = { git = "https://github.com/TheCrowDBot/CrawIO.git" }
-python = "^3.12"
+crowmatcher = { git = "https://github.com/TheCrowDBot/CrowMatcher.git" }
+python = "^3.12, !=3.14.1"
 streamlit = "^1.58.0"
 tensorflow = "^2.21.0"
 ultralytics = "^8.4.75"

@@ -1,4 +1,7 @@
-MODEL_SPECS = {
+from typing import Any
+
+
+MODEL_SPECS: dict[str, dict[str, Any]] = {
     "obb": {
         "title": "OBB Detection Model",
         "file_type": ["pt"],

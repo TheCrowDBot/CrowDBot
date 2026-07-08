@@ -2,7 +2,7 @@ from ultralytics import YOLO
 import streamlit as st
 import time
 
-from config.settings import (
+from crowdbot.config.settings import (
     AUTO_ADVANCE_DEFAULT,
     SHOW_LOGS_DEFAULT,
     SHOW_IMAGE_DEFAULT,

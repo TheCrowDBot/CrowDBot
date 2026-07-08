@@ -1,6 +1,6 @@
 import streamlit as st
-from services.image_loader import load_images
-from services.pipeline_queue import set_queue
+from crowdbot.services.image_loader import load_images
+from crowdbot.services.pipeline_queue import set_queue
 
 
 def render_folder_selector():

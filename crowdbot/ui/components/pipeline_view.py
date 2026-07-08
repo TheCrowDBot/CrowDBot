@@ -1,6 +1,6 @@
 import streamlit as st
 from PIL import Image
-from services.pipeline_queue import current_item, get_queue, get_index
+from crowdbot.services.pipeline_queue import current_item, get_queue, get_index
 
 
 def render_pipeline_view():
