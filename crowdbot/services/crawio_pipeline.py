@@ -27,8 +27,13 @@ class CrawIOPipeline:
             ]
 
             drawio_entity = DrawioEntity(
+                id=entity.id,
                 name=entity.name,
                 attributes=attributes,
+                x=entity.x,
+                y=entity.y,
+                # width=entity.width,
+                # height=entity.height,
             )
 
             generator.add_entity(drawio_entity)

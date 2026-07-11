@@ -41,6 +41,7 @@ def render_processing_page():
             matcher_result = run_matcher_step(
                 obb_result=obb_result,
             )
+            st.write(matcher_result)
             ocr_result = run_ocr_step(
                 model_path=sidebar["ocr_model"],
                 vocab_path=sidebar["ocr_vocab"],

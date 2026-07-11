@@ -5,7 +5,7 @@ __pycache__/
 
 # C extensions
 *.so
-
+*.drawio
 models/
 images/
 # Distribution / packaging
@@ -229,3 +229,4 @@ Icon?
 .DocumentRevisions-V100/
 .AppleDouble/
 .LSOverride
+workspace/state/models_registry.json

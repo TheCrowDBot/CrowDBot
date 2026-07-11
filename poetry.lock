@@ -472,7 +472,7 @@ test-no-images = ["pytest", "pytest-cov", "pytest-rerunfailures", "pytest-xdist"
 
 [[package]]
 name = "crawio"
-version = "0.1.0"
+version = "0.1.1"
 description = "crawio - A draw.io wrapper built for CrowDBot"
 optional = false
 python-versions = "^3.12"
@@ -483,7 +483,7 @@ develop = false
 type = "git"
 url = "https://github.com/TheCrowDBot/CrawIO.git"
 reference = "HEAD"
-resolved_reference = "dd6688ddd7dac16d3a67b45448ff5332f67e390c"
+resolved_reference = "c13622b0cf363f6fca534b7b05e034413d27e10f"
 
 [[package]]
 name = "crowmatcher"
