@@ -13,6 +13,13 @@
       "hash": "6ed2360805ed5ccf1d7de4093ead4355",
       "source": "upload",
       "uploaded_at": 1783603772.4139001
+    },
+    {
+      "name": "best_model_jul_7.pt",
+      "path": "workspace\\models\\obb\\best_model_jul_7.pt",
+      "hash": "6ed2360805ed5ccf1d7de4093ead4355",
+      "source": "upload",
+      "uploaded_at": 1783890554.8636153
     }
   ],
   "ocr": [
@@ -23,6 +30,22 @@
       "source": "upload",
       "uploaded_at": 1783788966.029224,
       "vocab_path": "workspace/models/ocr/vocab (1).json"
+    },
+    {
+      "name": "best_model_final.pt",
+      "path": "workspace\\models\\ocr\\best_model_final.pt",
+      "hash": "0598eb583904b8616074eb155526e517",
+      "source": "upload",
+      "uploaded_at": 1783890589.9080646,
+      "vocab_path": "workspace\\models\\ocr\\vocab.json"
+    },
+    {
+      "name": "best_model_final.pt",
+      "path": "workspace\\models\\ocr\\best_model_final.pt",
+      "hash": "0598eb583904b8616074eb155526e517",
+      "source": "upload",
+      "uploaded_at": 1783890629.0675392,
+      "vocab_path": "workspace\\models\\ocr\\vocab.json"
     }
   ]
 }

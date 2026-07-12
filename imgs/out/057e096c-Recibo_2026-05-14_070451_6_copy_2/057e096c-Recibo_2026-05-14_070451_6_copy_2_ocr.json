@@ -1,0 +1,1031 @@
+{
+    "tables": [
+        {
+            "entity_id": 0,
+            "entity_polygon": [
+                [
+                    1720,
+                    1083
+                ],
+                [
+                    1719,
+                    992
+                ],
+                [
+                    1104,
+                    995
+                ],
+                [
+                    1104,
+                    1087
+                ]
+            ],
+            "entity_bbox": {
+                "x_min": 1104,
+                "y_min": 992,
+                "x_max": 1720,
+                "y_max": 1087
+            },
+            "attributes": [
+                {
+                    "polygon": [
+                        [
+                            1736,
+                            1161
+                        ],
+                        [
+                            1736,
+                            1083
+                        ],
+                        [
+                            1105,
+                            1086
+                        ],
+                        [
+                            1105,
+                            1164
+                        ]
+                    ],
+                    "bbox": {
+                        "x_min": 1105,
+                        "y_min": 1083,
+                        "x_max": 1736,
+                        "y_max": 1164
+                    },
+                    "relationships": [],
+                    "text": "nK D"
+                },
+                {
+                    "polygon": [
+                        [
+                            1734,
+                            1244
+                        ],
+                        [
+                            1734,
+                            1162
+                        ],
+                        [
+                            1110,
+                            1161
+                        ],
+                        [
+                            1110,
+                            1243
+                        ]
+                    ],
+                    "bbox": {
+                        "x_min": 1110,
+                        "y_min": 1161,
+                        "x_max": 1734,
+                        "y_max": 1244
+                    },
+                    "relationships": [
+                        {
+                            "label": "rel_zero_or_many",
+                            "position": [
+                                1067,
+                                1227
+                            ],
+                            "distance": 0,
+                            "source_entity_id": 0,
+                            "linked_position": [
+                                762,
+                                1234
+                            ],
+                            "linked_label": "rel_one_only"
+                        }
+                    ],
+                    "text": "no e"
+                },
+                {
+                    "polygon": [
+                        [
+                            1728,
+                            1321
+                        ],
+                        [
+                            1728,
+                            1241
+                        ],
+                        [
+                            1119,
+                            1244
+                        ],
+                        [
+                            1120,
+                            1324
+                        ]
+                    ],
+                    "bbox": {
+                        "x_min": 1119,
+                        "y_min": 1241,
+                        "x_max": 1728,
+                        "y_max": 1324
+                    },
+                    "relationships": [],
+                    "text": "no"
+                },
+                {
+                    "polygon": [
+                        [
+                            1735,
+                            1402
+                        ],
+                        [
+                            1735,
+                            1321
+                        ],
+                        [
+                            1112,
+                            1323
+                        ],
+                        [
+                            1113,
+                            1404
+                        ]
+                    ],
+                    "bbox": {
+                        "x_min": 1112,
+                        "y_min": 1321,
+                        "x_max": 1735,
+                        "y_max": 1404
+                    },
+                    "relationships": [],
+                    "text": "id_boCed K"
+                },
+                {
+                    "polygon": [
+                        [
+                            1731,
+                            1483
+                        ],
+                        [
+                            1731,
+                            1401
+                        ],
+                        [
+                            1122,
+                            1403
+                        ],
+                        [
+                            1122,
+                            1484
+                        ]
+                    ],
+                    "bbox": {
+                        "x_min": 1122,
+                        "y_min": 1401,
+                        "x_max": 1731,
+                        "y_max": 1484
+                    },
+                    "relationships": [],
+                    "text": "escço"
+                },
+                {
+                    "polygon": [
+                        [
+                            1737,
+                            1568
+                        ],
+                        [
+                            1737,
+                            1485
+                        ],
+                        [
+                            1131,
+                            1482
+                        ],
+                        [
+                            1130,
+                            1565
+                        ]
+                    ],
+                    "bbox": {
+                        "x_min": 1130,
+                        "y_min": 1482,
+                        "x_max": 1737,
+                        "y_max": 1568
+                    },
+                    "relationships": [
+                        {
+                            "label": "rel_one_only",
+                            "position": [
+                                815,
+                                1567
+                            ],
+                            "distance": 0,
+                            "source_entity_id": 0,
+                            "linked_position": [
+                                1055,
+                                1561
+                            ],
+                            "linked_label": "rel_one_only"
+                        },
+                        {
+                            "label": "rel_one_only",
+                            "position": [
+                                1481,
+                                1692
+                            ],
+                            "distance": 0,
+                            "source_entity_id": 0,
+                            "linked_position": [
+                                1481,
+                                1840
+                            ],
+                            "linked_label": "rel_zero_or_many"
+                        }
+                    ],
+                    "text": "nod"
+                }
+            ],
+            "text": "nomD"
+        },
+        {
+            "entity_id": 1,
+            "entity_polygon": [
+                [
+                    717,
+                    1078
+                ],
+                [
+                    715,
+                    985
+                ],
+                [
+                    227,
+                    997
+                ],
+                [
+                    229,
+                    1091
+                ]
+            ],
+            "entity_bbox": {
+                "x_min": 227,
+                "y_min": 985,
+                "x_max": 717,
+                "y_max": 1091
+            },
+            "attributes": [
+                {
+                    "polygon": [
+                        [
+                            712,
+                            1157
+                        ],
+                        [
+                            711,
+                            1079
+                        ],
+                        [
+                            236,
+                            1085
+                        ],
+                        [
+                            238,
+                            1163
+                        ]
+                    ],
+                    "bbox": {
+                        "x_min": 236,
+                        "y_min": 1079,
+                        "x_max": 712,
+                        "y_max": 1163
+                    },
+                    "relationships": [],
+                    "text": "nomD"
+                },
+                {
+                    "polygon": [
+                        [
+                            717,
+                            1238
+                        ],
+                        [
+                            717,
+                            1156
+                        ],
+                        [
+                            236,
+                            1159
+                        ],
+                        [
+                            236,
+                            1240
+                        ]
+                    ],
+                    "bbox": {
+                        "x_min": 236,
+                        "y_min": 1156,
+                        "x_max": 717,
+                        "y_max": 1240
+                    },
+                    "relationships": [
+                        {
+                            "label": "rel_zero_or_many",
+                            "position": [
+                                1067,
+                                1227
+                            ],
+                            "distance": 0,
+                            "source_entity_id": 1,
+                            "linked_position": [
+                                762,
+                                1234
+                            ],
+                            "linked_label": "rel_one_only"
+                        }
+                    ],
+                    "text": "So"
+                },
+                {
+                    "polygon": [
+                        [
+                            712,
+                            1324
+                        ],
+                        [
+                            712,
+                            1236
+                        ],
+                        [
+                            244,
+                            1239
+                        ],
+                        [
+                            245,
+                            1327
+                        ]
+                    ],
+                    "bbox": {
+                        "x_min": 244,
+                        "y_min": 1236,
+                        "x_max": 712,
+                        "y_max": 1327
+                    },
+                    "relationships": [],
+                    "text": "PK o"
+                }
+            ],
+            "text": "nome"
+        },
+        {
+            "entity_id": 2,
+            "entity_polygon": [
+                [
+                    707,
+                    2199
+                ],
+                [
+                    706,
+                    2107
+                ],
+                [
+                    232,
+                    2114
+                ],
+                [
+                    233,
+                    2206
+                ]
+            ],
+            "entity_bbox": {
+                "x_min": 232,
+                "y_min": 2107,
+                "x_max": 707,
+                "y_max": 2206
+            },
+            "attributes": [
+                {
+                    "polygon": [
+                        [
+                            709,
+                            2277
+                        ],
+                        [
+                            708,
+                            2198
+                        ],
+                        [
+                            242,
+                            2205
+                        ],
+                        [
+                            244,
+                            2285
+                        ]
+                    ],
+                    "bbox": {
+                        "x_min": 242,
+                        "y_min": 2198,
+                        "x_max": 709,
+                        "y_max": 2285
+                    },
+                    "relationships": [
+                        {
+                            "label": "rel_zero_or_many",
+                            "position": [
+                                1107,
+                                2266
+                            ],
+                            "distance": 0,
+                            "source_entity_id": 2,
+                            "linked_position": [
+                                783,
+                                2274
+                            ],
+                            "linked_label": "rel_one_only"
+                        }
+                    ],
+                    "text": "nomD"
+                },
+                {
+                    "polygon": [
+                        [
+                            710,
+                            2364
+                        ],
+                        [
+                            710,
+                            2279
+                        ],
+                        [
+                            235,
+                            2279
+                        ],
+                        [
+                            235,
+                            2364
+                        ]
+                    ],
+                    "bbox": {
+                        "x_min": 235,
+                        "y_min": 2279,
+                        "x_max": 710,
+                        "y_max": 2364
+                    },
+                    "relationships": [],
+                    "text": "Co o"
+                },
+                {
+                    "polygon": [
+                        [
+                            708,
+                            2442
+                        ],
+                        [
+                            709,
+                            2361
+                        ],
+                        [
+                            237,
+                            2359
+                        ],
+                        [
+                            236,
+                            2439
+                        ]
+                    ],
+                    "bbox": {
+                        "x_min": 236,
+                        "y_min": 2359,
+                        "x_max": 709,
+                        "y_max": 2442
+                    },
+                    "relationships": [],
+                    "text": "PK ra"
+                },
+                {
+                    "polygon": [
+                        [
+                            709,
+                            2526
+                        ],
+                        [
+                            709,
+                            2440
+                        ],
+                        [
+                            238,
+                            2441
+                        ],
+                        [
+                            239,
+                            2527
+                        ]
+                    ],
+                    "bbox": {
+                        "x_min": 238,
+                        "y_min": 2440,
+                        "x_max": 709,
+                        "y_max": 2527
+                    },
+                    "relationships": [],
+                    "text": "nao"
+                }
+            ],
+            "text": "nom"
+        },
+        {
+            "entity_id": 3,
+            "entity_polygon": [
+                [
+                    1866,
+                    1964
+                ],
+                [
+                    1866,
+                    1872
+                ],
+                [
+                    1156,
+                    1873
+                ],
+                [
+                    1156,
+                    1965
+                ]
+            ],
+            "entity_bbox": {
+                "x_min": 1156,
+                "y_min": 1872,
+                "x_max": 1866,
+                "y_max": 1965
+            },
+            "attributes": [
+                {
+                    "polygon": [
+                        [
+                            1858,
+                            2044
+                        ],
+                        [
+                            1858,
+                            1964
+                        ],
+                        [
+                            1169,
+                            1962
+                        ],
+                        [
+                            1168,
+                            2042
+                        ]
+                    ],
+                    "bbox": {
+                        "x_min": 1168,
+                        "y_min": 1962,
+                        "x_max": 1858,
+                        "y_max": 2044
+                    },
+                    "relationships": [
+                        {
+                            "label": "rel_one_only",
+                            "position": [
+                                1481,
+                                1692
+                            ],
+                            "distance": 0,
+                            "source_entity_id": 3,
+                            "linked_position": [
+                                1481,
+                                1840
+                            ],
+                            "linked_label": "rel_zero_or_many"
+                        }
+                    ],
+                    "text": "ca"
+                },
+                {
+                    "polygon": [
+                        [
+                            1837,
+                            2124
+                        ],
+                        [
+                            1838,
+                            2042
+                        ],
+                        [
+                            1161,
+                            2040
+                        ],
+                        [
+                            1161,
+                            2122
+                        ]
+                    ],
+                    "bbox": {
+                        "x_min": 1161,
+                        "y_min": 2040,
+                        "x_max": 1838,
+                        "y_max": 2124
+                    },
+                    "relationships": [],
+                    "text": "nK l"
+                },
+                {
+                    "polygon": [
+                        [
+                            1864,
+                            2207
+                        ],
+                        [
+                            1864,
+                            2123
+                        ],
+                        [
+                            1155,
+                            2120
+                        ],
+                        [
+                            1155,
+                            2204
+                        ]
+                    ],
+                    "bbox": {
+                        "x_min": 1155,
+                        "y_min": 2120,
+                        "x_max": 1864,
+                        "y_max": 2207
+                    },
+                    "relationships": [],
+                    "text": "nomoo"
+                },
+                {
+                    "polygon": [
+                        [
+                            1873,
+                            2285
+                        ],
+                        [
+                            1873,
+                            2204
+                        ],
+                        [
+                            1146,
+                            2203
+                        ],
+                        [
+                            1146,
+                            2284
+                        ]
+                    ],
+                    "bbox": {
+                        "x_min": 1146,
+                        "y_min": 2203,
+                        "x_max": 1873,
+                        "y_max": 2285
+                    },
+                    "relationships": [],
+                    "text": "i_operaseo_ID"
+                },
+                {
+                    "polygon": [
+                        [
+                            1871,
+                            2370
+                        ],
+                        [
+                            1872,
+                            2287
+                        ],
+                        [
+                            1131,
+                            2280
+                        ],
+                        [
+                            1130,
+                            2364
+                        ]
+                    ],
+                    "bbox": {
+                        "x_min": 1130,
+                        "y_min": 2280,
+                        "x_max": 1872,
+                        "y_max": 2370
+                    },
+                    "relationships": [
+                        {
+                            "label": "rel_zero_or_many",
+                            "position": [
+                                1107,
+                                2266
+                            ],
+                            "distance": 0,
+                            "source_entity_id": 3,
+                            "linked_position": [
+                                783,
+                                2274
+                            ],
+                            "linked_label": "rel_one_only"
+                        }
+                    ],
+                    "text": "ne_cogeuço"
+                }
+            ],
+            "text": "FKme"
+        },
+        {
+            "entity_id": 4,
+            "entity_polygon": [
+                [
+                    758,
+                    1482
+                ],
+                [
+                    756,
+                    1386
+                ],
+                [
+                    225,
+                    1393
+                ],
+                [
+                    226,
+                    1489
+                ]
+            ],
+            "entity_bbox": {
+                "x_min": 225,
+                "y_min": 1386,
+                "x_max": 758,
+                "y_max": 1489
+            },
+            "attributes": [
+                {
+                    "polygon": [
+                        [
+                            762,
+                            1552
+                        ],
+                        [
+                            760,
+                            1475
+                        ],
+                        [
+                            235,
+                            1490
+                        ],
+                        [
+                            237,
+                            1566
+                        ]
+                    ],
+                    "bbox": {
+                        "x_min": 235,
+                        "y_min": 1475,
+                        "x_max": 762,
+                        "y_max": 1566
+                    },
+                    "relationships": [],
+                    "text": "dadtdo"
+                },
+                {
+                    "polygon": [
+                        [
+                            761,
+                            1639
+                        ],
+                        [
+                            761,
+                            1558
+                        ],
+                        [
+                            235,
+                            1559
+                        ],
+                        [
+                            235,
+                            1640
+                        ]
+                    ],
+                    "bbox": {
+                        "x_min": 235,
+                        "y_min": 1558,
+                        "x_max": 761,
+                        "y_max": 1640
+                    },
+                    "relationships": [
+                        {
+                            "label": "rel_one_only",
+                            "position": [
+                                815,
+                                1567
+                            ],
+                            "distance": 0,
+                            "source_entity_id": 4,
+                            "linked_position": [
+                                1055,
+                                1561
+                            ],
+                            "linked_label": "rel_one_only"
+                        }
+                    ],
+                    "text": "ne"
+                },
+                {
+                    "polygon": [
+                        [
+                            757,
+                            1720
+                        ],
+                        [
+                            758,
+                            1642
+                        ],
+                        [
+                            217,
+                            1636
+                        ],
+                        [
+                            216,
+                            1713
+                        ]
+                    ],
+                    "bbox": {
+                        "x_min": 216,
+                        "y_min": 1636,
+                        "x_max": 758,
+                        "y_max": 1720
+                    },
+                    "relationships": [],
+                    "text": "cntar_o"
+                },
+                {
+                    "polygon": [
+                        [
+                            731,
+                            1798
+                        ],
+                        [
+                            731,
+                            1715
+                        ],
+                        [
+                            216,
+                            1716
+                        ],
+                        [
+                            216,
+                            1799
+                        ]
+                    ],
+                    "bbox": {
+                        "x_min": 216,
+                        "y_min": 1715,
+                        "x_max": 731,
+                        "y_max": 1799
+                    },
+                    "relationships": [],
+                    "text": "PK Rl"
+                },
+                {
+                    "polygon": [
+                        [
+                            737,
+                            1887
+                        ],
+                        [
+                            738,
+                            1802
+                        ],
+                        [
+                            233,
+                            1794
+                        ],
+                        [
+                            232,
+                            1879
+                        ]
+                    ],
+                    "bbox": {
+                        "x_min": 232,
+                        "y_min": 1794,
+                        "x_max": 738,
+                        "y_max": 1887
+                    },
+                    "relationships": [],
+                    "text": "Isto"
+                }
+            ],
+            "text": "Pc"
+        }
+    ],
+    "relationships": [
+        {
+            "label": "rel_zero_or_many",
+            "position": [
+                1067,
+                1227
+            ],
+            "distance": 0,
+            "source_entity_id": 0,
+            "linked_position": [
+                762,
+                1234
+            ],
+            "linked_label": "rel_one_only"
+        },
+        {
+            "label": "rel_one_only",
+            "position": [
+                815,
+                1567
+            ],
+            "distance": 0,
+            "source_entity_id": 0,
+            "linked_position": [
+                1055,
+                1561
+            ],
+            "linked_label": "rel_one_only"
+        },
+        {
+            "label": "rel_one_only",
+            "position": [
+                1481,
+                1692
+            ],
+            "distance": 0,
+            "source_entity_id": 0,
+            "linked_position": [
+                1481,
+                1840
+            ],
+            "linked_label": "rel_zero_or_many"
+        },
+        {
+            "label": "rel_zero_or_many",
+            "position": [
+                1067,
+                1227
+            ],
+            "distance": 0,
+            "source_entity_id": 1,
+            "linked_position": [
+                762,
+                1234
+            ],
+            "linked_label": "rel_one_only"
+        },
+        {
+            "label": "rel_zero_or_many",
+            "position": [
+                1107,
+                2266
+            ],
+            "distance": 0,
+            "source_entity_id": 2,
+            "linked_position": [
+                783,
+                2274
+            ],
+            "linked_label": "rel_one_only"
+        },
+        {
+            "label": "rel_one_only",
+            "position": [
+                1481,
+                1692
+            ],
+            "distance": 0,
+            "source_entity_id": 3,
+            "linked_position": [
+                1481,
+                1840
+            ],
+            "linked_label": "rel_zero_or_many"
+        },
+        {
+            "label": "rel_zero_or_many",
+            "position": [
+                1107,
+                2266
+            ],
+            "distance": 0,
+            "source_entity_id": 3,
+            "linked_position": [
+                783,
+                2274
+            ],
+            "linked_label": "rel_one_only"
+        },
+        {
+            "label": "rel_one_only",
+            "position": [
+                815,
+                1567
+            ],
+            "distance": 0,
+            "source_entity_id": 4,
+            "linked_position": [
+                1055,
+                1561
+            ],
+            "linked_label": "rel_one_only"
+        }
+    ]
+}

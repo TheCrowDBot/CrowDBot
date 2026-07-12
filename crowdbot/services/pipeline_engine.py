@@ -60,7 +60,12 @@ def run_pipeline():
         st.session_state.pipeline_context = {
             "image_path": image,
             "output_dir": st.session_state.output_folder,
-            "outputs": st.session_state.get("outputs", {}),
+            "outputs": {
+                "obb": st.session_state.save_obb,
+                "matcher": st.session_state.save_matcher,
+                "ocr": st.session_state.save_ocr,
+                "drawio": st.session_state.save_drawio,
+            },
         }
 
         st.session_state.pipeline_step = 0
