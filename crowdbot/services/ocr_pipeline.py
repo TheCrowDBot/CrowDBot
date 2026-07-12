@@ -5,8 +5,17 @@ import cv2
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-
-from crowdbot.services.ocr_preprocessing import crop_rotated, preprocess_for_ocr, TARGET_W, TARGET_H
+import streamlit as st
+import logging
+from pathlib import Path
+from crowdbot.services.ocr_preprocessing import (
+    crop_rotated,
+    preprocess_for_ocr,
+    TARGET_W,
+    TARGET_H,
+)
+from crowdbot.services.json_utils import save_json
+from crowdbot.services.path_utils import get_output_folder
 from crowdbot.config.settings import (
     SHOW_IMAGE_DEFAULT,
     SHOW_LOGS_DEFAULT,
@@ -16,6 +25,7 @@ from crowdbot.config.settings import (
     OCR_CLASSES,
 )
 
+logger = logging.getLogger(__name__)
 BLANK_IDX = 0
 
 
@@ -29,7 +39,7 @@ def load_vocab(vocab_path: str):
 
 
 def decode_predictions(log_probs: torch.Tensor, idx_to_char: dict) -> list[str]:
-    pred_indices = torch.argmax(log_probs, dim=-1)  
+    pred_indices = torch.argmax(log_probs, dim=-1)
     results = []
     for seq in pred_indices:
         seq = seq.tolist()
@@ -47,15 +57,20 @@ class CRNN(nn.Module):
     def __init__(self, num_classes):
         super().__init__()
         self.cnn = nn.Sequential(
-            nn.Conv2d(1, 64, 3, padding=1), nn.ReLU(inplace=True),
+            nn.Conv2d(1, 64, 3, padding=1),
+            nn.ReLU(inplace=True),
             nn.MaxPool2d(2, 2),
-            nn.Conv2d(64, 128, 3, padding=1), nn.ReLU(inplace=True),
+            nn.Conv2d(64, 128, 3, padding=1),
+            nn.ReLU(inplace=True),
             nn.MaxPool2d(2, 2),
-            nn.Conv2d(128, 256, 3, padding=1), nn.ReLU(inplace=True),
+            nn.Conv2d(128, 256, 3, padding=1),
+            nn.ReLU(inplace=True),
             nn.BatchNorm2d(256),
-            nn.Conv2d(256, 256, 3, padding=1), nn.ReLU(inplace=True),
+            nn.Conv2d(256, 256, 3, padding=1),
+            nn.ReLU(inplace=True),
             nn.MaxPool2d((2, 1), (2, 1)),
-            nn.Conv2d(256, 512, 3, padding=1), nn.ReLU(inplace=True),
+            nn.Conv2d(256, 512, 3, padding=1),
+            nn.ReLU(inplace=True),
             nn.BatchNorm2d(512),
             nn.MaxPool2d((2, 1), (2, 1)),
         )
@@ -66,13 +81,21 @@ class CRNN(nn.Module):
             feat_dim = c * h
 
         self.rnn = nn.LSTM(
-            input_size=feat_dim, hidden_size=256, num_layers=1,
-            batch_first=True, bidirectional=True, dropout=0.0,
+            input_size=feat_dim,
+            hidden_size=256,
+            num_layers=1,
+            batch_first=True,
+            bidirectional=True,
+            dropout=0.0,
         )
         self.dropout1 = nn.Dropout(0.35)
         self.rnn2 = nn.LSTM(
-            input_size=512, hidden_size=256, num_layers=1,
-            batch_first=True, bidirectional=True, dropout=0.0,
+            input_size=512,
+            hidden_size=256,
+            num_layers=1,
+            batch_first=True,
+            bidirectional=True,
+            dropout=0.0,
         )
         self.dropout2 = nn.Dropout(0.35)
         self.fc = nn.Linear(512, num_classes)
@@ -91,50 +114,123 @@ class CRNN(nn.Module):
 
 
 class OCRPipeline:
+    name = "ocr"
 
-    def __init__(self, model_path: str, vocab_path: str = "../config/vocab.json", device: str = None):
-        self.device = torch.device(device or ("cuda" if torch.cuda.is_available() else "cpu"))
-        
-        torch.backends.cudnn.enabled = False
+    def __init__(
+        self,
+        model_path: str,
+        vocab_path: str = "../config/vocab.json",
+        device: str = None,
+    ):
+        try:
 
-        self.idx_to_char, vocab_size = load_vocab(vocab_path)
-        num_classes = vocab_size + 1  
+            self.device = torch.device(
+                device or ("cuda" if torch.cuda.is_available() else "cpu")
+            )
 
-        self.model = CRNN(num_classes).to(self.device)
-        self.model.load_state_dict(torch.load(model_path, map_location=self.device))
-        self.model.eval()
+            torch.backends.cudnn.enabled = True
+
+            self.idx_to_char, vocab_size = load_vocab(vocab_path)
+            num_classes = vocab_size + 1
+
+            self.model = CRNN(num_classes).to(self.device)
+            self.model.load_state_dict(torch.load(model_path, map_location=self.device))
+            self.model.eval()
+        except Exception as e:
+            raise RuntimeError(f"OCR model or vocabulary file not found: {e}") from e
+
+        except Exception as e:
+            raise RuntimeError(f"Failed to initialize OCR model: {e}") from e
+
+    def _save_result(
+        self,
+        result: dict,
+        image_path: str,
+        output_dir: str,
+    ):
+        image_name = Path(image_path).stem
+
+        output_folder, image_name = get_output_folder(
+            image_path,
+            output_dir,
+        )
+
+        output_file = output_folder / f"{image_name}_ocr.json"
+        save_json(
+            result,
+            output_file,
+        )
+
+        return output_file
 
     def run_on_crop(self, crop: np.ndarray) -> str:
         """Corre OCR numa única crop (np.ndarray BGR ou cinza)."""
-        tensor = preprocess_for_ocr(crop).to(self.device)
-        with torch.no_grad():
-            log_probs = self.model(tensor)  # (1, T, C)
-        texts = decode_predictions(log_probs.cpu(), self.idx_to_char)
-        return texts[0] if texts else ""
+        texts = None
+        try:
+            tensor = preprocess_for_ocr(crop).to(self.device)
+            with torch.no_grad():
+                log_probs = self.model(tensor)  # (1, T, C)
+            texts = decode_predictions(log_probs.cpu(), self.idx_to_char)
+            return texts[0] if texts else ""
+        except Exception:
+            logger.exception("OCR failed on crop")
+
+            st.error(
+                "Failed to perform OCR on image region. " "Check logs for details."
+            )
+
+            return ""
 
     def run(
         self,
-        image_path: str,
-        schema: dict,
-        *,
-        show_image=False,
-        show_logs=False,
+        image_path,
+        matcher,
+        output_dir=None,
+        outputs=None,
+        **kwargs,
     ):
 
         img = cv2.imread(image_path)
+        if img is None:
+            raise ValueError(f"Could not read image: {image_path}")
 
-        for table in schema["tables"]:
+        if "tables" not in matcher:
+            raise ValueError("No tables found...")
+
+        for table in matcher["tables"]:
 
             # entity OCR
             entity_crop = crop_rotated(img, table["entity_polygon"])
 
-            table["text"] = self.run_on_crop(entity_crop)
+            try:
+                table["text"] = self.run_on_crop(entity_crop)
+            except Exception:
+                table["text"] = ""
+
+            if "attributes" not in table:
+                raise ValueError("No attributes found...")
 
             # attributes OCR
             for attr in table["attributes"]:
 
                 crop = crop_rotated(img, attr["polygon"])
 
-                attr["text"] = self.run_on_crop(crop)
+                try:
+                    attr["text"] = self.run_on_crop(crop)
+                except Exception:
+                    attr["text"] = ""
 
-        return schema
+        # if auto_advance: ----- Handled by pipeline_orchestrator.py (kept here, as a comment, for historical purposes)
+        #     if "pipeline_index" in st.session_state:
+        #         st.session_state.pipeline_index += 1
+
+        #     st.rerun()
+        if output_dir and outputs and outputs.get("ocr", False):
+
+            self._save_result(
+                result=matcher,
+                image_path=image_path,
+                output_dir=output_dir,
+            )
+
+        return matcher

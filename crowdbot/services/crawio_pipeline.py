@@ -5,14 +5,41 @@ from crawio.generator import (
     Attribute as DrawioAttribute,
     Relationship as DrawioRelationship,
 )
+from crowdbot.services.path_utils import get_output_folder
 
 
 class CrawIOPipeline:
+    name = "crawio"
 
-    def run(self, json):
-        schema = parse_er_diagram(json, DEBUG=True)
-        for e in schema.entities:
-            print("ENTITY:", e.name, "| ATTRS:", [a.name for a in e.attributes])
+    def _save_result(
+        self,
+        generator: ERDiagramGenerator,
+        image_path,
+        output_dir,
+    ):
+        output_folder, image_name = get_output_folder(
+            image_path,
+            output_dir,
+        )
+
+        output_file = output_folder / f"{image_name}.drawio"
+
+        generator.save_to_file(str(output_file))
+
+        return output_file
+
+    def run(
+        self,
+        matcher,
+        image_path,
+        output_dir="out",
+        outputs=None,
+        **kwargs,
+    ):
+        if matcher is None:
+            raise ValueError("Missing matcher result")
+
+        schema = parse_er_diagram(matcher, DEBUG=False)
         generator = ERDiagramGenerator()
 
         for entity in schema.entities:
@@ -50,6 +77,7 @@ class CrawIOPipeline:
 
             generator.add_relationship(drawio_relationship)
 
-        generator.save_to_file("diagram.drawio")
+        if output_dir and outputs and outputs.get("drawio", False):
+            self._save_result(generator, image_path, output_dir)
 
         return generator

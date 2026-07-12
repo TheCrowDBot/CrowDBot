@@ -4,13 +4,23 @@ IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".tif", ".tiff", ".bmp", ".webp"}
 
 
 def load_images(folder_path: str) -> list[str]:
-    folder = Path(folder_path)
+    target = Path(folder_path)
 
-    if not folder.exists() or not folder.is_dir():
+    if not target.exists():
         return []
 
-    return sorted(
-        str(p)
-        for p in folder.rglob("*")
-        if p.is_file() and p.suffix.lower() in IMAGE_EXTENSIONS
-    )
+    # Handle single images
+    if target.is_file():
+        if target.suffix.lower() in IMAGE_EXTENSIONS:
+            return [str(target)]
+        return []
+
+    # Handle dir with multiple images
+    if target.is_dir():
+        return sorted(
+            str(p)
+            for p in target.rglob("*")
+            if p.is_file() and p.suffix.lower() in IMAGE_EXTENSIONS
+        )
+
+    return []

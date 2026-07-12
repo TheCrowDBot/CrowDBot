@@ -483,7 +483,7 @@ develop = false
 type = "git"
 url = "https://github.com/TheCrowDBot/CrawIO.git"
 reference = "HEAD"
-resolved_reference = "c13622b0cf363f6fca534b7b05e034413d27e10f"
+resolved_reference = "be6dd89ad205c1c080246ff60b20a1784c8e148f"
 
 [[package]]
 name = "crowmatcher"

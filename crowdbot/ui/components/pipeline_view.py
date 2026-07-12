@@ -17,5 +17,6 @@ def render_pipeline_view():
         img = Image.open(current)
 
         st.image(img, width=250, caption=current)
-    else:
+
+    if idx != 0 and idx == len(queue):
         st.info("Pipeline finished")

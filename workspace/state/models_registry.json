@@ -19,10 +19,10 @@
     {
       "name": "best_model_final.pt",
       "path": "workspace/models/ocr/best_model_final.pt",
-      "hash": "15a98a951e73f90729f01cd958cb8851",
+      "hash": "0598eb583904b8616074eb155526e517",
       "source": "upload",
-      "uploaded_at": 1783603770.452969,
-      "vocab_path": "workspace/models/ocr/vocab.json"
+      "uploaded_at": 1783788966.029224,
+      "vocab_path": "workspace/models/ocr/vocab (1).json"
     }
   ]
 }
