@@ -128,7 +128,7 @@ class OCRPipeline:
                 device or ("cuda" if torch.cuda.is_available() else "cpu")
             )
 
-            torch.backends.cudnn.enabled = True
+            torch.backends.cudnn.enabled = False
 
             self.idx_to_char, vocab_size = load_vocab(vocab_path)
             num_classes = vocab_size + 1

@@ -41,9 +41,16 @@ class CrawIOPipeline:
 
         schema = parse_er_diagram(matcher, DEBUG=False)
         generator = ERDiagramGenerator()
-
+        
+        # Criamos o mapa ao mesmo tempo para poupar loops
+        entity_map = {}
+        
         for entity in schema.entities:
+            # Popular o mapa de tradução
+            entity_map[str(entity.id)] = entity.name
+            entity_map[entity.name] = entity.name
 
+            # Mapear os atributos para o formato da biblioteca
             attributes = [
                 DrawioAttribute(
                     name=attribute.name,
@@ -53,29 +60,36 @@ class CrawIOPipeline:
                 for attribute in entity.attributes
             ]
 
+            # Instanciar a entidade do Draw.io
             drawio_entity = DrawioEntity(
                 id=entity.id,
                 name=entity.name,
                 attributes=attributes,
                 x=entity.x,
                 y=entity.y,
-                # width=entity.width,
-                # height=entity.height,
             )
 
             generator.add_entity(drawio_entity)
 
         for relationship in schema.relationships:
+            # Tenta traduzir o source e target ("0" -> "NomeDaEntidade"). 
+            source_name = entity_map.get(str(relationship.source), relationship.source)
+            target_name = entity_map.get(str(relationship.target), relationship.target)
+
             drawio_relationship = DrawioRelationship(
-                source=relationship.source,
-                target=relationship.target,
+                source=source_name,
+                target=target_name,
                 source_cardinality=relationship.source_cardinality,
                 target_cardinality=relationship.target_cardinality,
                 from_attribute=relationship.source_attribute,
                 to_attribute=relationship.target_attribute,
             )
 
-            generator.add_relationship(drawio_relationship)
+            try:
+                generator.add_relationship(drawio_relationship)
+            except ValueError as e:
+                print(f"Aviso: Não foi possível adicionar a relação devido a: {e}")
+                continue
 
         if output_dir and outputs and outputs.get("drawio", False):
             self._save_result(generator, image_path, output_dir)

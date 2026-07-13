@@ -46,6 +46,14 @@
       "source": "upload",
       "uploaded_at": 1783890629.0675392,
       "vocab_path": "workspace\\models\\ocr\\vocab.json"
+    },
+    {
+      "name": "best_model_final.pt",
+      "path": "workspace\\models\\ocr\\best_model_final.pt",
+      "hash": "4325bf31b58b14e8a033eac63ee580a0",
+      "source": "upload",
+      "uploaded_at": 1783909277.4420712,
+      "vocab_path": "workspace\\models\\ocr\\vocab.json"
     }
   ]
 }

@@ -53,7 +53,7 @@
                         "y_max": 1164
                     },
                     "relationships": [],
-                    "text": "nK D"
+                    "text": "Pomo"
                 },
                 {
                     "polygon": [
@@ -96,7 +96,7 @@
                             "linked_label": "rel_one_only"
                         }
                     ],
-                    "text": "no e"
+                    "text": "Cooe"
                 },
                 {
                     "polygon": [
@@ -124,7 +124,7 @@
                         "y_max": 1324
                     },
                     "relationships": [],
-                    "text": "no"
+                    "text": "CorPd"
                 },
                 {
                     "polygon": [
@@ -152,7 +152,7 @@
                         "y_max": 1404
                     },
                     "relationships": [],
-                    "text": "id_boCed K"
+                    "text": "id_pesecorPp"
                 },
                 {
                     "polygon": [
@@ -180,7 +180,7 @@
                         "y_max": 1484
                     },
                     "relationships": [],
-                    "text": "escço"
+                    "text": "coscrçço"
                 },
                 {
                     "polygon": [
@@ -237,10 +237,10 @@
                             "linked_label": "rel_zero_or_many"
                         }
                     ],
-                    "text": "nod"
+                    "text": "t?"
                 }
             ],
-            "text": "nomD"
+            "text": "Pome"
         },
         {
             "entity_id": 1,
@@ -295,7 +295,7 @@
                         "y_max": 1163
                     },
                     "relationships": [],
-                    "text": "nomD"
+                    "text": "Pome"
                 },
                 {
                     "polygon": [
@@ -338,7 +338,7 @@
                             "linked_label": "rel_one_only"
                         }
                     ],
-                    "text": "So"
+                    "text": "Te"
                 },
                 {
                     "polygon": [
@@ -366,10 +366,10 @@
                         "y_max": 1327
                     },
                     "relationships": [],
-                    "text": "PK o"
+                    "text": "PK N"
                 }
             ],
-            "text": "nome"
+            "text": "Pomo"
         },
         {
             "entity_id": 2,
@@ -439,7 +439,7 @@
                             "linked_label": "rel_one_only"
                         }
                     ],
-                    "text": "nomD"
+                    "text": "Pome"
                 },
                 {
                     "polygon": [
@@ -467,7 +467,7 @@
                         "y_max": 2364
                     },
                     "relationships": [],
-                    "text": "Co o"
+                    "text": "Te"
                 },
                 {
                     "polygon": [
@@ -495,7 +495,7 @@
                         "y_max": 2442
                     },
                     "relationships": [],
-                    "text": "PK ra"
+                    "text": "PacOa"
                 },
                 {
                     "polygon": [
@@ -523,10 +523,10 @@
                         "y_max": 2527
                     },
                     "relationships": [],
-                    "text": "nao"
+                    "text": "t_oo R"
                 }
             ],
-            "text": "nom"
+            "text": "do o"
         },
         {
             "entity_id": 3,
@@ -596,7 +596,7 @@
                             "linked_label": "rel_zero_or_many"
                         }
                     ],
-                    "text": "ca"
+                    "text": "Z"
                 },
                 {
                     "polygon": [
@@ -624,7 +624,7 @@
                         "y_max": 2124
                     },
                     "relationships": [],
-                    "text": "nK l"
+                    "text": "PKD"
                 },
                 {
                     "polygon": [
@@ -652,7 +652,7 @@
                         "y_max": 2207
                     },
                     "relationships": [],
-                    "text": "nomoo"
+                    "text": "weon"
                 },
                 {
                     "polygon": [
@@ -680,7 +680,7 @@
                         "y_max": 2285
                     },
                     "relationships": [],
-                    "text": "i_operaseo_ID"
+                    "text": "peragãon"
                 },
                 {
                     "polygon": [
@@ -723,10 +723,10 @@
                             "linked_label": "rel_one_only"
                         }
                     ],
-                    "text": "ne_cogeuço"
+                    "text": "ne_coguo"
                 }
             ],
-            "text": "FKme"
+            "text": "FK"
         },
         {
             "entity_id": 4,
@@ -781,7 +781,7 @@
                         "y_max": 1566
                     },
                     "relationships": [],
-                    "text": "dadtdo"
+                    "text": "usi_ssro"
                 },
                 {
                     "polygon": [
@@ -824,7 +824,7 @@
                             "linked_label": "rel_one_only"
                         }
                     ],
-                    "text": "ne"
+                    "text": "FK"
                 },
                 {
                     "polygon": [
@@ -852,7 +852,7 @@
                         "y_max": 1720
                     },
                     "relationships": [],
-                    "text": "cntar_o"
+                    "text": "nno"
                 },
                 {
                     "polygon": [
@@ -880,7 +880,7 @@
                         "y_max": 1799
                     },
                     "relationships": [],
-                    "text": "PK Rl"
+                    "text": "PK cO_Sal"
                 },
                 {
                     "polygon": [
@@ -908,10 +908,10 @@
                         "y_max": 1887
                     },
                     "relationships": [],
-                    "text": "Isto"
+                    "text": "Fcrp"
                 }
             ],
-            "text": "Pc"
+            "text": "nomID"
         }
     ],
     "relationships": [
