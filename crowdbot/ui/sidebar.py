@@ -50,29 +50,28 @@ def render_sidebar():
                 st.warning("Load an image folder first.")
 
             st.write("Save:")
+            st.checkbox(
+                "DrawIO diagram",
+                value=True,
+                key="save_drawio",
+            )
 
             st.checkbox(
                 "OBB detections",
-                value=True,
+                value=False,
                 key="save_obb",
             )
 
             st.checkbox(
                 "Matcher result",
-                value=True,
+                value=False,
                 key="save_matcher",
             )
 
             st.checkbox(
                 "OCR result",
-                value=True,
+                value=False,
                 key="save_ocr",
-            )
-
-            st.checkbox(
-                "DrawIO diagram",
-                value=True,
-                key="save_drawio",
             )
 
     return {

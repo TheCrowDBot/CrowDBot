@@ -24,6 +24,11 @@ def render_model_manager(model_type: str):
 
     st.subheader(spec["title"])
 
+    pending_key = f"{model_type}_pending_selection"
+    select_key = f"{model_type}_model_select"
+
+    if pending_key in st.session_state:
+        st.session_state[select_key] = st.session_state.pop(pending_key)
     model_by_name = {m["name"]: m for m in models}
 
     labels = {
@@ -111,7 +116,7 @@ def render_model_manager(model_type: str):
 
                 registry[model_type] = models
                 save_registry(registry)
-
+                st.session_state[f"{model_type}_pending_selection"] = uploaded.name
                 show_temp_success(
                     f"Installed {uploaded.name}",
                     key=f"{model_type}_upload_msg",
@@ -140,6 +145,7 @@ def render_model_manager(model_type: str):
 
                     registry[model_type] = models
                     save_registry(registry)
+                    st.session_state[f"{model_type}_pending_selection"] = name
 
                     show_temp_success(
                         f"Downloaded {name}",

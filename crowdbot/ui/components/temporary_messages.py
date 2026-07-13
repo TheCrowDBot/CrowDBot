@@ -3,7 +3,6 @@ import streamlit as st
 
 
 def show_temp_success(message: str, key: str, ttl: int):
-
     now = time.time()
 
     if "messages" not in st.session_state:
