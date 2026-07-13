@@ -198,9 +198,8 @@ class OCRPipeline:
             raise ValueError("No tables found...")
 
         for table in matcher["tables"]:
-
-            # entity OCR
-            entity_crop = crop_rotated(img, table["entity_polygon"])
+            entity_poly = table["entity_polygon"]
+            entity_crop = crop_rotated(img, entity_poly)
 
             try:
                 table["text"] = self.run_on_crop(entity_crop)
@@ -212,21 +211,15 @@ class OCRPipeline:
 
             # attributes OCR
             for attr in table["attributes"]:
-
-                crop = crop_rotated(img, attr["polygon"])
+                attr_poly = attr["polygon"]
+                crop = crop_rotated(img, attr_poly)
 
                 try:
                     attr["text"] = self.run_on_crop(crop)
                 except Exception:
                     attr["text"] = ""
 
-        # if auto_advance: ----- Handled by pipeline_orchestrator.py (kept here, as a comment, for historical purposes)
-        #     if "pipeline_index" in st.session_state:
-        #         st.session_state.pipeline_index += 1
-
-        #     st.rerun()
         if output_dir and outputs and outputs.get("ocr", False):
-
             self._save_result(
                 result=matcher,
                 image_path=image_path,

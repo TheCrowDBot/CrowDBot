@@ -531,7 +531,7 @@ detection = ["ultralytics (>=8.4.90,<9.0.0)"]
 type = "git"
 url = "https://github.com/TheCrowDBot/CrowMatcher.git"
 reference = "HEAD"
-resolved_reference = "05fabb16f2008dd2d59187a755ba6212a15c0566"
+resolved_reference = "b9a6d7809cb5bd9714341c2aad738fc4adf10d85"
 
 [[package]]
 name = "cuda-bindings"
